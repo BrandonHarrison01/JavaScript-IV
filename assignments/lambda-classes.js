@@ -17,11 +17,11 @@ class Instructor extends Person {
         this.favLanguage = attributes.favLanguage;
         this.catchPhrase = attributes.catchPhrase;
     }
-    demo(subject) {
+    demo() {
         console.log(`Today we are learning about ${subject}`);
     }
-    grade(student, object) {
-        console.log(`${Student.name} recieves a perfect score on ${subject}`)
+    grade() {
+        console.log(`${steve.name} recieves a perfect score on ${subject}`)
     }
 }
 
@@ -33,13 +33,13 @@ class Student extends Person {
         this.favSubjects = attributes.favSubjects;
     }
     listsSubjects() {
-        console.log(steve.favSubjects);
+        console.log(this.favSubjects);
     }
-    PRAssignment(subject) {
-        console.log(`${Student.name} has submitted a PR for ${subject}`)
+    PRAssignment() {
+        console.log(`${this.name} has submitted a PR for ${this.favSubjects}`)
     }
-    sprintChallenge(subject) {
-        console.log(`${Student.name} has begun sprint challenge on ${subject}`)
+    sprintChallenge() {
+        console.log(`${this.name} has begun sprint challenge on ${this.favSubjects}`)
     }
 }
 
@@ -49,11 +49,11 @@ class ProjectManager extends Instructor {
         this.gradClassName = attributes.gradClassName;
         this.favInstructor = attributes.favInstructor;
     }
-    standUp(channel) {
-        console.log(`${ProjectManager.name} announces to ${channel}, @channel standy times!`);
+    standUp() {
+        console.log(`${this.name} announces to ${channel}, @channel standy times!`);
     }
-    dubugsCode(student, subject) {
-        console.log(`${ProjectManager.name} debugs ${Student.name}'s code on ${subject}`)
+    dubugsCode() {
+        console.log(`${this.name} debugs ${Student.name}'s code on ${subject}`)
     }
 }
 
@@ -72,7 +72,7 @@ const steve = new Student({
   age: 12,
   previousBackground: 'meme chef',
   className: 'web200',
-  favSubjects: `not javascript`
+  favSubjects: [`not javascript`, `everything`, `somethings`]
 });
 
 const karen = new ProjectManager({
@@ -83,6 +83,9 @@ const karen = new ProjectManager({
   favInstructor: 'Fred',
 });
 
+const subject = "Functions"
+const channel = "Web200_channel"
+
 karen.standUp();
 steve.listsSubjects();
-fred.demo();
+fred.grade();
