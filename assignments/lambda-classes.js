@@ -17,11 +17,11 @@ class Instructor extends Person {
         this.favLanguage = attributes.favLanguage;
         this.catchPhrase = attributes.catchPhrase;
     }
-    demo() {
+    demo(subject) {
         console.log(`Today we are learning about ${subject}`);
     }
-    grade() {
-        console.log(`${steve.name} recieves a perfect score on ${subject}`)
+    grade(student, subject) {
+        console.log(`${student.name} recieves a perfect score on ${subject}`)
     }
 }
 
@@ -35,11 +35,11 @@ class Student extends Person {
     listsSubjects() {
         console.log(this.favSubjects);
     }
-    PRAssignment() {
-        console.log(`${this.name} has submitted a PR for ${this.favSubjects}`)
+    PRAssignment(subject) {
+        console.log(`${this.name} has submitted a PR for ${subject}`)
     }
-    sprintChallenge() {
-        console.log(`${this.name} has begun sprint challenge on ${this.favSubjects}`)
+    sprintChallenge(subject) {
+        console.log(`${this.name} has begun sprint challenge on ${subject}`)
     }
 }
 
@@ -49,11 +49,11 @@ class ProjectManager extends Instructor {
         this.gradClassName = attributes.gradClassName;
         this.favInstructor = attributes.favInstructor;
     }
-    standUp() {
+    standUp(channel) {
         console.log(`${this.name} announces to ${channel}, @channel standy times!`);
     }
-    dubugsCode() {
-        console.log(`${this.name} debugs ${Student.name}'s code on ${subject}`)
+    dubugsCode(student, subject) {
+        console.log(`${this.name} debugs ${student.name}'s code on ${subject}`)
     }
 }
 
@@ -83,9 +83,13 @@ const karen = new ProjectManager({
   favInstructor: 'Fred',
 });
 
-const subject = "Functions"
-const channel = "Web200_channel"
 
-karen.standUp();
+
+karen.standUp("Web200_channel");
+karen.dubugsCode(steve, 'java');
 steve.listsSubjects();
-fred.grade();
+steve.PRAssignment('ruby');
+steve.sprintChallenge('node');
+fred.demo('python');
+fred.grade(steve, 'python');
+fred.speak();
